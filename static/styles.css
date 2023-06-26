@@ -1,0 +1,41 @@
+html {
+    background-color: #393838;
+    color: #ffffff;
+    font-family: 'Mukta', sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+h1 {
+    font-size: 400%;
+    color: rgb(30, 142, 56);
+}
+
+p {
+    font-size: 150%;
+    max-width: 45%;
+    margin: 0 auto;
+	float: none; 
+}
+
+footer {
+    font-size: 200%;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+footer #github {
+    color: #010409;
+}
+
+footer #twitter {
+    color: #1DA1F2;
+}
+
+footer #codewars {
+    color: #B1361E;
+}
