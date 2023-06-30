@@ -5,8 +5,21 @@ function toInt(a) { return Math.round(a); }
 
 class Sprite {
     constructor(src) {
-        this.data = new Image();
-        this.data.src = src;
+        this.img = new Image();
+        this.img.src = src;
+        this.img.crossOrigin = "Anonymous";
+        this.img.onload = () => {
+            const temp = document.createElement("canvas");
+            temp.width = this.img.width;
+            temp.height = this.img.height;
+            temp.getContext("2d").drawImage(this.img, 0, 0);
+            
+            this.data = temp.getContext("2d").getImageData(0, 0, temp.width, temp.height).data;
+            console.log(this.data);
+
+            document.removeChild(temp);
+        };
+
     }
 
     width() { return this.data.width; }
@@ -17,13 +30,13 @@ class Sprite {
 class GameEngine {
     constructor(appName, screenWidth, screenHeight, pixelWidth, pixelHeight) {
         this.canvas = document.querySelector("div#main canvas#screen");
+        this.ctx = this.canvas.getContext("2d");
         this.title = document.querySelector("div#main div#info h1#title");
         this.fps = document.querySelector("div#main div#info h1#fps");
 
         this.setTitle(appName);
         this.resizeScreen(screenWidth, screenHeight, pixelWidth, pixelHeight);
 
-        this.ctx = this.canvas.getContext("2d");
         this.mouse = vec2(Infinity, Infinity);
 
         document.addEventListener("mousemove", (evt) => {
@@ -67,8 +80,10 @@ class GameEngine {
 
     // WARNING! Canvas resets to the origin state after calling this method
     resizeScreen(screenWidth, screenHeight, pixelWidth, pixelHeight) {
-        this.canvas.width = screenWidth * pixelWidth;
-        this.canvas.height = screenHeight * pixelHeight;
+        this.canvas.width = screenWidth;
+        this.canvas.height = screenHeight;
+        this.canvas.style.width = (screenWidth * pixelWidth).toString() + "px";
+        this.canvas.style.height = (screenHeight * pixelHeight).toString() + "px";
 
         this.screenSize = vec2(screenWidth, screenHeight);
         this.pixelSize = vec2(pixelWidth, pixelHeight);
@@ -78,53 +93,34 @@ class GameEngine {
     height() { return this.screenSize.y; }
 
     drawPixel(x, y, col) {
-        x = toInt(x); y = toInt(y);
         this.ctx.fillStyle = col;
-        this.ctx.fillRect(
-            x * this.pixelSize.x, y * this.pixelSize.y,
-            this.pixelSize.x, this.pixelSize.y
-        );
+        this.ctx.fillRect(toInt(x), toInt(y), 1, 1);
     }
 
     fillRect(x, y, w, h, col) {
-        x = toInt(x); y = toInt(y);
-        w = toInt(w); h = toInt(h);
         this.ctx.fillStyle = col;
-        this.ctx.fillRect(
-            x * this.pixelSize.x, y * this.pixelSize.y,
-            w * this.pixelSize.x, h * this.pixelSize.y
-        );
+        this.ctx.fillRect(toInt(x), toInt(y), toInt(w), toInt(h));
     }
 
     drawRect(x, y, w, h, col) {
-        x = toInt(x); y = toInt(y);
-        w = toInt(w); h = toInt(h);
         this.ctx.strokeStyle = col;
-        this.ctx.strokeRect(
-            x * this.pixelSize.x, y * this.pixelSize.y,
-            w * this.pixelSize.x, h * this.pixelSize.y
-        );
+        this.ctx.strokeRect(toInt(x), toInt(y), toInt(w), toInt(h));
     }
 
     drawLine(x1, y1, x2, y2, col) {
-        x1 = toInt(x1); y1 = toInt(y1);
-        x2 = toInt(x2); y2 = toInt(y2);
         this.ctx.strokeStyle = col;
         this.ctx.beginPath();
-        this.ctx.moveTo(x1 * this.pixelSize.x, y1 * this.pixelSize.y);
-        this.ctx.lineTo(x2 * this.pixelSize.x, y2 * this.pixelSize.y);
+        this.ctx.moveTo(toInt(x1), toInt(y1));
+        this.ctx.lineTo(toInt(x2), toInt(y2));
         this.ctx.stroke();
     }
 
-    clear(col) { this.fillRect(0, 0, this.canvas.width, this.canvas.height, col); }
+    clear(col) {
+        this.fillRect(0, 0, this.width(), this.height(), col);
+    }
 
     drawSprite(x, y, sprite) {
-        x = toInt(x); y = toInt(y);
-        this.ctx.drawImage(
-            sprite.data,
-            x * this.pixelSize.x, y * this.pixelSize.y,
-            sprite.width() * this.pixelSize.x, sprite.height() * this.pixelSize.y,
-        );
+        this.ctx.drawImage(sprite.data, toInt(x), toInt(y));
     }
 
 }
