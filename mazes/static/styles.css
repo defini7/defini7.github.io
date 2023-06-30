@@ -1,0 +1,13 @@
+div#main {
+    text-align: center;
+}
+
+canvas#screen {
+    image-rendering: pixelated;
+}
+
+div#info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
