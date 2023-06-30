@@ -3,11 +3,14 @@ Number.prototype.clamp = function(min, max) { return Math.min(Math.max(this, min
 function vec2(a, b) { return {x:a,y:b}; }
 function toInt(a) { return Math.round(a); }
 
+function obj2rgb(obj) {
+    return `rgb(${obj.r}, ${obj.g}, ${obj.b}, ${obj.a})`;
+}
+
 class Sprite {
     constructor(src) {
         this.img = new Image();
         this.img.src = src;
-        this.img.crossOrigin = "Anonymous";
         this.img.onload = () => {
             const temp = document.createElement("canvas");
             temp.width = this.img.width;
@@ -15,16 +18,22 @@ class Sprite {
             temp.getContext("2d").drawImage(this.img, 0, 0);
             
             this.data = temp.getContext("2d").getImageData(0, 0, temp.width, temp.height).data;
-            console.log(this.data);
-
-            document.removeChild(temp);
         };
 
     }
 
-    width() { return this.data.width; }
-    height() { return this.data.height };
+    width() { return this.img.width; }
+    height() { return this.img.height };
     size() { return vec2(this.width(), this.height()); }
+
+    getPixel(x, y) {
+        return {
+            r: this.data[4 * (y * this.img.width + x) + 0],
+            g: this.data[4 * (y * this.img.width + x) + 1],
+            b: this.data[4 * (y * this.img.width + x) + 2],
+            a: this.data[4 * (y * this.img.width + x) + 3],
+        }
+    }
 }
 
 class GameEngine {
@@ -38,12 +47,16 @@ class GameEngine {
         this.resizeScreen(screenWidth, screenHeight, pixelWidth, pixelHeight);
 
         this.mouse = vec2(Infinity, Infinity);
+        this.keys = {};
 
         document.addEventListener("mousemove", (evt) => {
             const rect = this.canvas.getBoundingClientRect();
             this.mouse.x = Math.round((((evt.clientX - rect.left) / (rect.right - rect.left)) * this.canvas.width).clamp(0, this.canvas.width) / this.pixelSize.x);
             this.mouse.y = Math.round((((evt.clientY - rect.top) / (rect.bottom - rect.top)) * this.canvas.height).clamp(0, this.canvas.height) / this.pixelSize.y);
         });
+
+        document.addEventListener("keydown", (evt) => { this.keys[evt.key] = true;  });
+        document.addEventListener("keyup",   (evt) => { this.keys[evt.key] = false; });
     }
 
     mainLoop() {
@@ -72,6 +85,11 @@ class GameEngine {
         };
 
         window.requestAnimationFrame(frameCallback);
+    }
+
+    keyPressed(key) {
+        if (this.keys[key] === undefined) return false;
+        return this.keys[key];
     }
 
     _updateFps(newFps) { this.fps.innerHTML = "FPS: " + newFps; }
