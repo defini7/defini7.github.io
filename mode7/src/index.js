@@ -64,7 +64,7 @@ class Mode7 extends GameEngine {
         }
 
         for (let i = 0; i < this.width(); i++)
-            this.drawPixel(x, this.width() / 2, 'cyan');
+            this.drawPixel(x, this.height() / 2, 'cyan');
 
         return true;
     }
