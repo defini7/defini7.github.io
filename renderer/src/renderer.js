@@ -38,6 +38,11 @@ class Sprite {
 
 class GameEngine {
     constructor(appName, screenWidth, screenHeight, pixelWidth, pixelHeight) {
+        screenWidth = toInt(screenWidth);
+        screenHeight = toInt(screenHeight);
+        pixelWidth = toInt(pixelWidth);
+        pixelHeight = toInt(pixelHeight);
+
         this.canvas = document.querySelector("div#main canvas#screen");
         this.ctx = this.canvas.getContext("2d");
         this.title = document.querySelector("div#main div#info h1#title");

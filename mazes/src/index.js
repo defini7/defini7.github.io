@@ -103,4 +103,4 @@ class Maze extends GameEngine {
     }
 }
 
-(new Maze("Maze", 160, 100, 8, 8)).mainLoop();
+(new Maze("Maze", window.innerWidth * 0.75 / 8, window.innerHeight * 0.75 / 8, 8, 8)).mainLoop();

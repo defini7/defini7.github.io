@@ -69,4 +69,4 @@ class Snow extends GameEngine {
     }
 }
 
-(new Snow("Snow", 800, 600, 1, 1)).mainLoop();
+(new Snow("Snow", window.innerWidth * 0.75, window.innerHeight * 0.75, 1, 1)).mainLoop();
