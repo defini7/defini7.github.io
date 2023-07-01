@@ -1,7 +1,9 @@
 Number.prototype.clamp = function(min, max) { return Math.min(Math.max(this, min), max); };
 
-function vec2(a, b) { return {x:a,y:b}; }
+function vec2(_x, _y) { return {x:_x,y:_y}; }
 function toInt(a) { return Math.round(a); }
+
+function pix(_r, _g, _b, _a = 255) { return {r:_r,g:_g,b:_b,a:_a}; } 
 
 function obj2rgb(obj) {
     return `rgb(${obj.r}, ${obj.g}, ${obj.b}, ${obj.a})`;
