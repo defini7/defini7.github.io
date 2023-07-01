@@ -25,8 +25,12 @@ h1 {
     color: rgb(30, 142, 56);
 }
 
-nav#links {
+nav#links a {
     text-align: left;
     font-size: 200%;
     color: greenyellow;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 1%;
+    padding-bottom: 20px;
 }

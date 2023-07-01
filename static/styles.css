@@ -2,7 +2,9 @@ html {
     background-color: #393838;
     color: #ffffff;
     font-family: 'Mukta', sans-serif;
+}
 
+article {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -26,10 +28,6 @@ footer {
     font-size: 200%;
 }
 
-a {
-    text-decoration: none;
-}
-
 footer #github {
     color: #010409;
 }
@@ -42,8 +40,11 @@ footer #codewars {
     color: #B1361E;
 }
 
-nav#links {
+nav#links a {
     text-align: left;
     font-size: 200%;
     color: greenyellow;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 1%;
 }
