@@ -101,6 +101,8 @@ class Maze extends GameEngine {
             }
         }
 
+        this.fillRect(this.stack.top().x, this.stack.top().y, this.cellSize, this.cellSize, "blue");
+
         return true;
     }
 }
