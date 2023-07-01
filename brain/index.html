@@ -4,9 +4,10 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, width=device-width">
-        <link rel="stylesheet" href="../renderer/static/styles.css">
+        <link rel="stylesheet" href="static/styles.css">
+        <link rel="stylesheet" href="../static/styles.css">
 
-        <title>Mazes</title>
+        <title>Brainf*ck</title>
     </head>
     <body>
         <noscript>You need to enable JavaScript to load this website</noscript>
@@ -19,14 +20,11 @@
         </nav>
         
         <div id="main">
-            <div id="info">
-                <h1 id="title"></h1>
-                <h1 id="fps">FPS: 0</h1>
-            </div>
-            <canvas id="screen"></canvas>
+            <textarea id="code" placeholder="Write your code here..."></textarea>
+            <button id="run-code">Run Code</button>
+            <h2 id="output"></h2>
         </div>
     </body>
 
-    <script src="../renderer/src/renderer.js"></script>
     <script src="src/index.js"></script>
 </html>

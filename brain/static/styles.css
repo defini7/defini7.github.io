@@ -1,0 +1,29 @@
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1%;
+}
+
+#code {
+    width: 100%;
+    font-size: 200%;
+    background-color: #008000;
+    color: white;
+    resize: vertical;
+}
+
+#output {
+    text-align: left;
+    padding: 2%;
+    width: 96%;
+    background-color: #000000;
+}
+
+#run-code {
+    margin-top: 1%;
+    width: 20%;
+    height: 5vh;
+    background-color: #808080;
+    color: #ffffff;
+}
