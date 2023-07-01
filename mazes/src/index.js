@@ -12,10 +12,12 @@ Array.prototype.top = function() {
 
 class Maze extends GameEngine {
     onCreate() {
-        this.maze = [];
-        this.mazeSize = vec2(40, 25);
-        this.maze.fill(0, 0, this.mazeSize.x * this.mazeSize.y);
         this.cellSize = 3;
+        this.maze = [];
+        this.mazeSize = vec2(toInt(this.width() / (this.cellSize+1)), toInt(this.height() / (this.cellSize+1)));
+        this.maze.fill(0, 0, this.mazeSize.x * this.mazeSize.y);
+
+        console.log(this.mazeSize);
         
         this.stack = [];
 
