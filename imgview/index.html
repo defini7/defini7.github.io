@@ -6,9 +6,10 @@
         <meta name="viewport" content="initial-scale=1, width=device-width">
 
         <link rel="shortcut icon" type="image/x-icon" href="../static/favicon.ico">
-        <link rel="stylesheet" href="../renderer/static/styles.css">
+        <link rel="stylesheet" href="static/styles.css">
+        <link rel="stylesheet" href="../static/styles.css">
 
-        <title>Plasm</title>
+        <title>Image Viewer</title>
     </head>
     <body>
         <noscript>You need to enable JavaScript to load this website</noscript>
@@ -23,15 +24,10 @@
         </nav>
         
         <div id="main">
-            <div id="info">
-                <h1 id="title"></h1>
-                <input type="range" id="scale" min="1" max="100" step="1" value="14" />
-                <h1 id="fps">FPS: 0</h1>
-            </div>
-            <canvas id="screen"></canvas>
+            <input type="file" onchange="grabData(this)" />
+            <img />
         </div>
     </body>
 
-    <script src="../renderer/src/renderer.js"></script>
     <script src="src/index.js"></script>
 </html>
