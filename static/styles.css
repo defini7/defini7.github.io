@@ -40,6 +40,18 @@ footer #codewars {
     color: #B1361E;
 }
 
+a {
+    text-decoration: none;
+}
+
+p a {
+    color: rgb(30, 142, 56);
+}
+
+div {
+    margin-bottom: 2%;
+}
+
 nav#links a {
     text-align: left;
     font-size: 200%;
