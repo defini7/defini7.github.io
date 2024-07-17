@@ -88,7 +88,7 @@ class Maze extends GameEngine {
 
         for (let i = 0; i < this.mazeSize.x * this.mazeSize.y; i++) {
             const x = i % this.mazeSize.x;
-            const y = Math.round(i / this.mazeSize.x);
+            const y = Math.round(i / this.mazeSize.x - 0.5);
 
             if (this.maze[i] & CELL["VISITED"])
                 this.fillRect(x * (this.cellSize + 1), y * (this.cellSize + 1), this.cellSize, this.cellSize, "green");
@@ -105,4 +105,5 @@ class Maze extends GameEngine {
     }
 }
 
-(new Maze("Maze", window.innerWidth * 0.75 / 8, window.innerHeight * 0.75 / 8, 8, 8)).mainLoop();
+const maze = new Maze("Maze", window.innerWidth * 0.75 / 8, window.innerHeight * 0.75 / 8, 8, 8);
+maze.mainLoop();
