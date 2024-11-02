@@ -15,20 +15,20 @@ div#info {
 html {
     background-color: #393838;
     color: #ffffff;
-    font-family: 'Mukta', sans-serif;
+    font-family: verdana, monospace, sans-serif;
 }
 
 h1 {
     margin-top: 0;
     margin-bottom: 0;
     font-size: 400%;
-    color: rgb(30, 142, 56);
+    color: rgb(60, 194, 204);
 }
 
 nav#links a {
     text-align: left;
     font-size: 200%;
-    color: greenyellow;
+    color: rgb(26, 167, 177);
     text-decoration: none;
     display: inline-block;
     margin-right: 1%;

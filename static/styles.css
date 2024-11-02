@@ -1,27 +1,25 @@
 html {
     background-color: #393838;
     color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: verdana, monospace, sans-serif;
 }
 
 article {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+    margin-top: 1%;
+    margin-left: 25%;
+    width: 50%;
 }
 
 h1 {
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 400%;
-    color: rgb(30, 142, 56);
+    font-size: 300%;
+    color: rgb(60, 194, 204);
 }
 
 p {
     font-size: 150%;
-    max-width: 45%;
-    margin: 0 auto;
-	float: none; 
+	float: none;
 }
 
 footer {
@@ -36,16 +34,12 @@ footer #twitter {
     color: #000000;
 }
 
-footer #codewars {
-    color: #B1361E;
-}
-
 a {
     text-decoration: none;
 }
 
 p a {
-    color: rgb(30, 142, 56);
+    color: rgb(36, 171, 180);
 }
 
 div {
@@ -53,9 +47,8 @@ div {
 }
 
 nav#links a {
-    text-align: left;
     font-size: 200%;
-    color: greenyellow;
+    color: rgb(26, 167, 177);
     text-decoration: none;
     display: inline-block;
     margin-right: 1%;
