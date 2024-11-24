@@ -26,10 +26,23 @@
                 <h1 id="title"></h1>
                 <h1 id="fps">FPS: 0</h1>
             </div>
-            <canvas id="screen"></canvas>
+            <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
         </div>
     </body>
 
-    <script src="../renderer/src/renderer.js"></script>
-    <script src="src/index.js"></script>
+    <script type='text/javascript'>
+        var Module = {
+            preRun: [],
+            postRun: [],
+            canvas: (function() {
+                var canvas = document.getElementById('canvas');
+
+                canvas.addEventListener("webglcontextlost", function(e) { alert('WebGL context lost. You will need to reload the page.'); e.preventDefault(); }, false);
+
+                return canvas;
+            })(),
+        };
+    </script>
+
+    <script async type="text/javascript" src="./index.js"></script>
 </html>
