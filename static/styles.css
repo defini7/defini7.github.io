@@ -1,56 +1,65 @@
 html {
-    background-color: #393838;
-    color: #ffffff;
-    font-family: verdana, monospace, sans-serif;
+    background-color: steelblue;
+    display: flex;
+    justify-content: center;
 }
 
-article {
-    margin-top: 1%;
-    margin-left: 25%;
+body {
     width: 50%;
 }
 
-h1 {
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 300%;
-    color: rgb(60, 194, 204);
+header, main {
+    background-color: aliceblue;
 }
 
-p {
-    font-size: 150%;
-	float: none;
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+header h3 {
+    align-self: flex-end;
+    font-weight: lighter;
+}
+
+header, main {
+    border-radius: 6px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+header, main, footer {
+    font-family: monospace;
+    margin-top: 1%;
+}
+
+main {
+    padding-top: 3%;
+    min-height: 70vh;
+}
+
+.note {
+    padding-top: 2%;
+    font-weight: lighter;
+    font-size: x-large;
+    display: flex;
+    flex-direction: column;
+}
+
+.date {
+    font-size: medium;
+}
+
+.note a {
+    margin-top: 1%;
 }
 
 footer {
-    font-size: 200%;
+    text-align: center;
 }
 
-footer #github {
-    color: #141414;
-}
-
-footer #twitter {
-    color: #000000;
-}
-
-a {
-    text-decoration: none;
-}
-
-p a {
-    color: rgb(36, 171, 180);
-}
-
-div {
-    margin-bottom: 2%;
-}
-
-nav#links a {
-    font-size: 200%;
-    color: rgb(26, 167, 177);
-    text-decoration: none;
-    display: inline-block;
-    margin-right: 1%;
-    margin-top: 0px;
+header a, header a:visited, header a:hover, header a:active {
+  color: inherit;
+  text-decoration-line: none;
 }
