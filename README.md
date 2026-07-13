@@ -19,3 +19,19 @@ python3 -m pip3 install markdown
 ```sh
 python3 scripts/upload.py
 ```
+
+# Demos
+
+1) Cube
+2) Mazes
+3) Minesweeperai
+4) Plasm
+5) Snake
+6) Snow
+7) Splines
+8) Tetris
+9) Yahtzee
+
+# Better call Saul website
+
+Visit defini7.github.io/bettercallsaul/index.html

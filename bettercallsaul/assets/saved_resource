@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VEO3API — AI Video Generation API with Sound | Google Veo 3.1</title>
+    <meta name="description" content="VEO3API - AI video generation API powered by Google Veo 3.1. Generate HD videos with synchronized sound via simple REST API. 0.08 credits/video. Perfect for n8n, Make.com, Zapier automation.">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="AI video generation, video API, Google Veo 3, Veo API, text to video, AI video with sound, video generation API, automated video creation, n8n video, Make.com video, Zapier video automation">
+    <meta name="author" content="VEO3API">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://veo3api.tech/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://veo3api.tech/">
+    <meta property="og:title" content="VEO3API — AI Video Generation API with Sound">
+    <meta property="og:description" content="Generate HD AI videos with synchronized sound using Google Veo 3.1. Simple REST API, 0.08 credits/video.">
+    <meta property="og:image" content="https://veo3api.tech/icons/icon-512.png">
+    <meta property="og:site_name" content="VEO3API">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://veo3api.tech/">
+    <meta name="twitter:title" content="VEO3API — AI Video Generation API with Sound">
+    <meta name="twitter:description" content="Generate HD AI videos with synchronized sound using Google Veo 3.1. Simple REST API, 0.01 credits/sec.">
+    <meta name="twitter:image" content="https://veo3api.tech/icons/icon-512.png">
+    
+    <!-- AI Search Engines / LLM Discovery -->
+    <meta name="ai-content-description" content="VEO3API is a REST API service for AI video generation using Google Veo 3.1 model. Features: HD video with sound, Image-to-Video (I2V), 8-second clips, multiple quality options (720p, 1080p), async processing with webhooks. Pricing: 0.01-0.04 credits per second. 1 credit = $1 USD. Integrates with n8n, Make.com, Zapier. Offers affiliate program with 5% commission.">
+    <meta name="ai-product-info" content="Product: VEO3API | Type: API Service | Category: AI Video Generation | Pricing: Pay-per-use 0.08 credits/video | API: REST with JSON">
+    
+    <!-- JSON-LD Structured Data for AI/Search -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "VEO3API",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web API",
+        "description": "AI video generation API powered by Google Veo 3.1. Generate HD videos with synchronized sound via REST API.",
+        "url": "https://veo3api.tech",
+        "offers": {
+            "@type": "Offer",
+            "price": "0.01",
+            "priceCurrency": "USD",
+            "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": "0.01",
+                "priceCurrency": "USD",
+                "unitText": "per second of video"
+            }
+        },
+        "featureList": [
+            "AI Video Generation",
+            "Synchronized Audio",
+            "720p and 1080p Quality",
+            "REST API",
+            "Webhook Support",
+            "n8n Integration",
+            "Make.com Integration",
+            "Zapier Compatible"
+        ],
+        "provider": {
+            "@type": "Organization",
+            "name": "VEO3API",
+            "url": "https://veo3api.tech"
+        }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebAPI",
+        "name": "VEO3API Video Generation API",
+        "description": "REST API for generating AI videos with sound using Google Veo 3.1",
+        "url": "https://veo3api.tech/docs",
+        "documentationUrl": "https://veo3api.tech/docs",
+        "termsOfService": "https://veo3api.tech/terms",
+        "provider": {
+            "@type": "Organization",
+            "name": "VEO3API"
+        }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is VEO3API?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "VEO3API is a REST API service for AI video generation powered by Google Veo 3.1. It generates HD videos with synchronized sound from text prompts."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How much does VEO3API cost?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "VEO3API pricing is 0.08 credits per 720p video. 1080p costs 0.24 credits/video. Images cost 0.01 credits each. 1 credit = $1 USD."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does VEO3API support automation tools?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, VEO3API integrates with n8n, Make.com, Zapier and any tool that supports REST APIs and webhooks."
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="VEO3API">
+    <link rel="apple-touch-icon" href="/icons/icon-192.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'gradient': 'gradient 8s ease infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .gradient-bg {
+            background: linear-gradient(-45deg, #0f0f23, #1a1a3e, #0d1f3c, #1a0a2e);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow {
+            box-shadow: 0 0 60px rgba(99, 102, 241, 0.3), 0 0 100px rgba(139, 92, 246, 0.2);
+        }
+        .glow-sm {
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .border-gradient {
+            border: 2px solid transparent;
+            background: linear-gradient(#1a1a3e, #1a1a3e) padding-box,
+                        linear-gradient(135deg, #818cf8, #c084fc, #f472b6) border-box;
+        }
+        .price-tag {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        .video-preview {
+            background: linear-gradient(135deg, #1e1e3f 0%, #2d1f4f 100%);
+        }
+        .code-block {
+            background: #0d1117;
+            border: 1px solid #30363d;
+        }
+        .feature-icon {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+        }
+        html { scroll-behavior: smooth; }
+        ::selection { background: rgba(139, 92, 246, 0.3); }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen text-white font-sans antialiased">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-xl">
+                        🎬
+                    </div>
+                    <span class="font-bold text-xl">VEO3<span class="text-indigo-400">API</span></span>
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#features" class="text-gray-300 hover:text-white transition" data-i18n="nav_features">Features</a>
+                    <a href="#pricing" class="text-gray-300 hover:text-white transition" data-i18n="nav_pricing">Pricing</a>
+                    <a href="/docs" class="text-gray-300 hover:text-white transition" data-i18n="nav_docs">API Docs</a>
+                    <a href="#integrations" class="text-gray-300 hover:text-white transition" data-i18n="nav_integrations">Integrations</a>
+                    <a href="/affiliates" class="text-gray-300 hover:text-white transition" data-i18n="nav_affiliates">Affiliates</a>
+                    <button id="nav-install-btn" onclick="installApp()" class="hidden text-gray-300 hover:text-white transition">📲 <span data-i18n="nav_install">Install</span></button>
+                    <!-- Language Selector -->
+                    <div class="relative" id="lang-dropdown">
+                        <button onclick="toggleLangMenu()" class="flex items-center gap-1 text-gray-300 hover:text-white transition px-2 py-1 rounded">
+                            <span id="current-lang-flag">🇬🇧</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div id="lang-menu" class="hidden absolute right-0 mt-2 py-2 w-40 glass rounded-lg shadow-xl z-50">
+                            <button onclick="setLang('en'); toggleLangMenu();" class="w-full text-left px-4 py-2 hover:bg-white/10 flex items-center gap-2"><span>🇬🇧</span><span>English</span></button>
+                            <button onclick="setLang('ru'); toggleLangMenu();" class="w-full text-left px-4 py-2 hover:bg-white/10 flex items-center gap-2"><span>🇷🇺</span><span>Русский</span></button>
+                            <button onclick="setLang('de'); toggleLangMenu();" class="w-full text-left px-4 py-2 hover:bg-white/10 flex items-center gap-2"><span>🇩🇪</span><span>Deutsch</span></button>
+                            <button onclick="setLang('es'); toggleLangMenu();" class="w-full text-left px-4 py-2 hover:bg-white/10 flex items-center gap-2"><span>🇪🇸</span><span>Español</span></button>
+                            <button onclick="setLang('fr'); toggleLangMenu();" class="w-full text-left px-4 py-2 hover:bg-white/10 flex items-center gap-2"><span>🇫🇷</span><span>Français</span></button>
+                            <button onclick="setLang('zh'); toggleLangMenu();" class="w-full text-left px-4 py-2 hover:bg-white/10 flex items-center gap-2"><span>🇨🇳</span><span>中文</span></button>
+                        </div>
+                    </div>
+                </div>
+                <div id="auth-buttons" class="flex items-center gap-4">
+                    <button id="mobile-install-btn" onclick="installApp()" class="hidden md:hidden text-gray-300 hover:text-white transition text-xl" title="Install App">📲</button>
+                    <a href="/login" id="login-link" class="text-gray-300 hover:text-white transition" data-i18n="nav_login">Login</a>
+                    <a href="/register" id="get-started-link" class="bg-indigo-600 hover:bg-indigo-700 px-5 py-2 rounded-lg font-medium transition" data-i18n="nav_get_started">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script src="/js/auth-nav.js"></script>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 relative overflow-hidden">
+        <!-- Background effects -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-indigo-600/20 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px]"></div>
+        
+        <div class="max-w-7xl mx-auto relative">
+            <div class="text-center max-w-4xl mx-auto">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-8">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    <span class="text-sm text-gray-300" data-i18n="hero_badge">Powered by Google Veo 3.1 — Latest Video Model</span>
+                </div>
+                
+                <!-- Main headline -->
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 leading-tight">
+                    <span data-i18n="hero_title_1">AI Video Generation</span><br>
+                    <span class="text-gradient" data-i18n="hero_title_2">With Sound</span>
+                </h1>
+                
+                <p class="text-xl text-gray-400 mb-4 max-w-2xl mx-auto" data-i18n="hero_subtitle">
+                    Create stunning 8-second HD videos with synchronized audio using the most advanced AI model.
+                    Perfect for automation workflows.
+                </p>
+                
+                <!-- Price highlight -->
+                <div class="inline-flex items-center gap-3 mb-10">
+                    <span class="price-tag text-white font-bold text-2xl px-6 py-3 rounded-xl">
+                        <span data-i18n="hero_price">HD Video</span> <span class="text-green-200 font-normal text-lg" data-i18n="hero_price_value">0.01 credits/sec</span>
+                    </span>
+                </div>
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+                    <a href="/register" class="group bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 px-8 py-4 rounded-xl font-semibold text-lg transition-all glow-sm hover:glow flex items-center justify-center gap-2">
+                        <span data-i18n="hero_cta_start">Start Generating</span>
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                        </svg>
+                    </a>
+                    <a href="/docs" class="glass hover:bg-white/10 px-8 py-4 rounded-xl font-semibold text-lg transition flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                        </svg>
+                        <span data-i18n="hero_cta_docs">View API Docs</span>
+                    </a>
+                </div>
+                
+                <!-- Video Preview Mockup -->
+                <div class="video-preview rounded-2xl p-8 glow max-w-4xl mx-auto">
+                    <div class="aspect-video rounded-xl bg-black/50 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/50 to-purple-900/50"></div>
+                        <div class="relative text-center">
+                            <div class="text-6xl mb-4 animate-float">🎥</div>
+                            <p class="text-gray-400 text-lg" data-i18n="hero_video_info">8 seconds • HD • With Audio</p>
+                        </div>
+                        <!-- Fake video controls -->
+                        <div class="absolute bottom-4 left-4 right-4 flex items-center gap-4">
+                            <button class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                            <div class="flex-1 h-1 bg-white/20 rounded-full overflow-hidden">
+                                <div class="h-full w-1/3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
+                            </div>
+                            <span class="text-sm text-gray-400">0:08</span>
+                            <button class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logos / Trust -->
+    <section class="py-12 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="text-center text-gray-500 text-sm mb-8">PERFECT FOR AUTOMATION PLATFORMS</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60">
+                <div class="flex items-center gap-2 text-2xl font-bold">
+                    <span class="text-[#EA4B71]">n</span><span class="text-white">8</span><span class="text-[#EA4B71]">n</span>
+                </div>
+                <div class="text-2xl font-bold text-[#6D4AFF]">Make</div>
+                <div class="text-2xl font-bold text-[#FF4A00]">Zapier</div>
+                <div class="text-2xl font-bold text-white">Pipedream</div>
+                <div class="text-2xl font-bold text-[#00D4AA]">Activepieces</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl font-bold mb-4"><span data-i18n="features_title">Why Choose</span> <span class="text-gradient">VEO3API</span></h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto" data-i18n="features_subtitle">
+                    The most affordable and powerful video generation API on the market
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Feature 1 -->
+                <div class="glass rounded-2xl p-8 hover:bg-white/5 transition group">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        🎵
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="feature_audio_title">Audio Included</h3>
+                    <p class="text-gray-400" data-i18n="feature_audio_desc">
+                        Veo 3.1 generates synchronized sound effects and ambient audio automatically. No extra cost.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="glass rounded-2xl p-8 hover:bg-white/5 transition group">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        ⚡
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="feature_fast_title">Fast Generation</h3>
+                    <p class="text-gray-400" data-i18n="feature_fast_desc">
+                        Get your video in 60-120 seconds. Parallel processing for batch requests.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="glass rounded-2xl p-8 hover:bg-white/5 transition group">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        📐
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="feature_formats_title">Multiple Formats</h3>
+                    <p class="text-gray-400" data-i18n="feature_formats_desc">
+                        16:9 landscape, 9:16 portrait (TikTok/Reels). All in HD quality.
+                    </p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="glass rounded-2xl p-8 hover:bg-white/5 transition group">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        🔗
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="feature_webhook_title">Webhook Support</h3>
+                    <p class="text-gray-400" data-i18n="feature_webhook_desc">
+                        Get notified instantly when your video is ready. Perfect for async workflows.
+                    </p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="glass rounded-2xl p-8 hover:bg-white/5 transition group">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        🛡️
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="feature_reliable_title">Reliable & Scalable</h3>
+                    <p class="text-gray-400" data-i18n="feature_reliable_desc">
+                        Auto-retry on failures, queue management, and parallel workers for high throughput.
+                    </p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="glass rounded-2xl p-8 hover:bg-white/5 transition group">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        🖼️
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="feature_i2v_title">Image to Video</h3>
+                    <p class="text-gray-400" data-i18n="feature_i2v_desc">
+                        Animate any image with AI. Upload a photo and describe the motion you want.
+                    </p>
+                </div>
+                
+                <!-- Feature 7 -->
+                <div class="glass rounded-2xl p-8 hover:bg-white/5 transition group">
+                    <div class="feature-icon w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        💳
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="feature_paygo_title">Pay As You Go</h3>
+                    <p class="text-gray-400" data-i18n="feature_paygo_desc">
+                        No subscriptions. Top up your balance and pay only for what you generate.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-24 px-4 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent"></div>
+        <div class="max-w-7xl mx-auto relative">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl font-bold mb-4" data-i18n="how_title">How It Works</h2>
+                <p class="text-gray-400 text-lg" data-i18n="how_subtitle">Three simple steps to generate AI videos</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-2xl font-bold mx-auto mb-6">1</div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="how_step1_title">Get API Key</h3>
+                    <p class="text-gray-400" data-i18n="how_step1_desc">Sign up and receive your API key instantly. Top up your balance.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-2xl font-bold mx-auto mb-6">2</div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="how_step2_title">Send Request</h3>
+                    <p class="text-gray-400" data-i18n="how_step2_desc">POST your prompt to the API. Set aspect ratio and duration.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500 to-orange-500 flex items-center justify-center text-2xl font-bold mx-auto mb-6">3</div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="how_step3_title">Get Video</h3>
+                    <p class="text-gray-400" data-i18n="how_step3_desc">Poll status or receive webhook. Download your HD video with audio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Section -->
+    <section id="api" class="py-24 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-6" data-i18n="api_title">Simple <span class="text-gradient">REST API</span></h2>
+                    <p class="text-gray-400 text-lg mb-8" data-i18n="api_subtitle">
+                        Just one endpoint to generate videos. Works with any HTTP client, automation platform, or programming language.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center">
+                                <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span data-i18n="api_feature1">RESTful JSON API</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center">
+                                <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span data-i18n="api_feature2">API Key authentication</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center">
+                                <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span data-i18n="api_feature3">Webhook callbacks</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center">
+                                <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span data-i18n="api_feature4">Status polling endpoint</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="code-block rounded-2xl overflow-hidden">
+                    <div class="flex items-center gap-2 px-4 py-3 border-b border-gray-700">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="ml-4 text-gray-400 text-sm">Generate Video</span>
+                    </div>
+                    <pre class="p-6 text-sm overflow-x-auto"><code class="text-gray-300"><span class="text-purple-400">POST</span> <span class="text-green-400">/v1/generate</span>
+<span class="text-gray-500">Headers:</span> X-API-Key: vfg_your_api_key
+
+<span class="text-gray-500">{</span>
+  <span class="text-blue-400">"prompt"</span>: <span class="text-yellow-300">"A majestic eagle soaring through 
+            mountain peaks at golden hour"</span>,
+  <span class="text-blue-400">"aspect_ratio"</span>: <span class="text-yellow-300">"16:9"</span>,
+  <span class="text-blue-400">"duration"</span>: <span class="text-orange-400">8</span>,
+  <span class="text-blue-400">"webhook_url"</span>: <span class="text-yellow-300">"https://your-n8n.com/webhook"</span>
+<span class="text-gray-500">}</span>
+
+<span class="text-gray-500">// Response:</span>
+<span class="text-gray-500">{</span>
+  <span class="text-blue-400">"task_id"</span>: <span class="text-yellow-300">"abc123-def456"</span>,
+  <span class="text-blue-400">"status"</span>: <span class="text-yellow-300">"pending"</span>,
+  <span class="text-blue-400">"cost"</span>: <span class="text-orange-400">0.08</span>,
+  <span class="text-blue-400">"estimated_time"</span>: <span class="text-orange-400">90</span>
+<span class="text-gray-500">}</span></code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integrations -->
+    <section id="integrations" class="py-24 px-4 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-950/20 to-transparent"></div>
+        <div class="max-w-7xl mx-auto relative">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl font-bold mb-4" data-i18n="integrations_title">Built for Automation</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto" data-i18n="integrations_subtitle">
+                    Use with your favorite workflow automation tools
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- n8n -->
+                <div class="glass rounded-2xl p-6 hover:bg-white/5 transition text-center">
+                    <div class="text-4xl font-bold mb-4">
+                        <span class="text-[#EA4B71]">n</span><span class="text-white">8</span><span class="text-[#EA4B71]">n</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">HTTP Request node → Generate → Webhook trigger</p>
+                </div>
+                
+                <!-- Make -->
+                <div class="glass rounded-2xl p-6 hover:bg-white/5 transition text-center">
+                    <div class="text-4xl font-bold text-[#6D4AFF] mb-4">Make</div>
+                    <p class="text-gray-400 text-sm">HTTP module with JSON body and custom headers</p>
+                </div>
+                
+                <!-- Zapier -->
+                <div class="glass rounded-2xl p-6 hover:bg-white/5 transition text-center">
+                    <div class="text-4xl font-bold text-[#FF4A00] mb-4">Zapier</div>
+                    <p class="text-gray-400 text-sm">Webhooks by Zapier with custom request</p>
+                </div>
+                
+                <!-- Custom -->
+                <div class="glass rounded-2xl p-6 hover:bg-white/5 transition text-center">
+                    <div class="text-4xl mb-4">🔧</div>
+                    <p class="text-gray-400 text-sm">Python, Node.js, PHP, cURL — any language</p>
+                </div>
+            </div>
+            
+            <!-- n8n Example -->
+            <div class="mt-16 glass rounded-2xl p-8">
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <span class="text-[#EA4B71]">n</span><span class="text-white">8</span><span class="text-[#EA4B71]">n</span>
+                    <span class="text-gray-400 font-normal">Workflow Example</span>
+                </h3>
+                <div class="flex flex-wrap items-center gap-4 justify-center">
+                    <div class="glass rounded-xl px-6 py-4 text-center">
+                        <div class="text-2xl mb-2">📝</div>
+                        <div class="text-sm">Trigger</div>
+                    </div>
+                    <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                    <div class="glass rounded-xl px-6 py-4 text-center border-indigo-500/50 border">
+                        <div class="text-2xl mb-2">🎬</div>
+                        <div class="text-sm">VEO3API</div>
+                    </div>
+                    <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                    <div class="glass rounded-xl px-6 py-4 text-center">
+                        <div class="text-2xl mb-2">⏳</div>
+                        <div class="text-sm">Wait</div>
+                    </div>
+                    <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                    <div class="glass rounded-xl px-6 py-4 text-center">
+                        <div class="text-2xl mb-2">📥</div>
+                        <div class="text-sm">Download</div>
+                    </div>
+                    <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                    <div class="glass rounded-xl px-6 py-4 text-center">
+                        <div class="text-2xl mb-2">📤</div>
+                        <div class="text-sm">Upload</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-24 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl font-bold mb-4"><span data-i18n="pricing_title">Simple</span> <span class="text-gradient">Pricing</span></h2>
+                <p class="text-gray-400 text-lg" data-i18n="pricing_subtitle">Pay only for what you generate. No hidden fees.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Main pricing card -->
+                <div class="border-gradient rounded-3xl p-1">
+                    <div class="bg-[#12122a] rounded-3xl p-8 md:p-12">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <div class="inline-block price-tag text-white font-bold text-sm px-3 py-1 rounded-full mb-4" data-i18n="pricing_best_value">
+                                    BEST VALUE
+                                </div>
+                                <h3 class="text-3xl font-bold mb-2" data-i18n="pricing_hd_video">HD Video With Sound</h3>
+                                <div class="flex items-baseline gap-2 mb-4">
+                                    <span class="text-5xl font-black">0.01</span>
+                                    <span class="text-gray-400" data-i18n="pricing_per_second">credits/sec</span>
+                                </div>
+                                <p class="text-gray-500 text-sm mb-6" data-i18n="pricing_example">8 sec video = 0.08 credits • 720p • 16:9 or 9:16</p>
+                                
+                                <ul class="space-y-3 mb-6">
+                                    <li class="flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                        <span data-i18n="pricing_audio_included">Audio generation included</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                        <span data-i18n="pricing_high_quality">High quality by default</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                        <span data-i18n="pricing_no_subscription">No subscription required</span>
+                                    </li>
+                                </ul>
+                                
+                                <!-- Other quality options -->
+                                <div class="text-gray-500 text-xs space-y-1">
+                                    <p data-i18n="pricing_720p_priority">720p priority = 0.02 credits/sec (faster queue)</p>
+                                    <p data-i18n="pricing_1080p">1080p = 0.03 credits/sec</p>
+                                    <p data-i18n="pricing_1080p_priority">1080p priority = 0.04 credits/sec</p>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="text-center mb-6">
+                                    <p class="text-gray-400 mb-2" data-i18n="pricing_topup">Buy credits (1 credit = $1)</p>
+                                </div>
+                                <a href="/ui" class="block w-full bg-white/10 hover:bg-white/20 text-center py-4 rounded-xl font-semibold transition">
+                                    10 credits → ~125 videos
+                                </a>
+                                <a href="/ui" class="block w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-center py-4 rounded-xl font-semibold transition glow-sm">
+                                    25 credits → ~312 videos
+                                </a>
+                                <a href="/ui" class="block w-full bg-white/10 hover:bg-white/20 text-center py-4 rounded-xl font-semibold transition">
+                                    50 credits → ~625 videos
+                                </a>
+                                <a href="/ui" class="block w-full bg-white/10 hover:bg-white/20 text-center py-4 rounded-xl font-semibold transition">
+                                    100 credits → ~1250 videos <span class="text-green-400 text-sm">+bonus</span>
+                                </a>
+                                <p class="text-gray-500 text-xs text-center mt-4" data-i18n="pricing_secure">Secure crypto payments</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Value proposition -->
+                <div class="mt-12 text-center">
+                    <p class="text-gray-400 mb-4" data-i18n="features_title">Why VEO3API?</p>
+                    <div class="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
+                        <div class="glass rounded-xl p-4">
+                            <div class="text-2xl mb-2">🔊</div>
+                            <div class="text-sm text-gray-300" data-i18n="feature_audio_title">Audio Included</div>
+                        </div>
+                        <div class="glass rounded-xl p-4">
+                            <div class="text-2xl mb-2">⚡</div>
+                            <div class="text-sm text-gray-300" data-i18n="feature_fast_title">Fast Generation</div>
+                        </div>
+                        <div class="glass rounded-xl p-4">
+                            <div class="text-2xl mb-2">🎯</div>
+                            <div class="text-sm text-gray-300" data-i18n="feature_api_title">Simple API</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 px-4 relative">
+        <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/50 to-transparent"></div>
+        <div class="max-w-4xl mx-auto text-center relative">
+            <h2 class="text-4xl sm:text-5xl font-bold mb-6" data-i18n="cta_title">
+                Ready to Generate Amazing Videos?
+            </h2>
+            <p class="text-gray-400 text-lg mb-10 max-w-2xl mx-auto" data-i18n="cta_subtitle">
+                Start with just 10 credits. No commitment, no subscription. Generate your first AI video in minutes.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/register" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 px-10 py-5 rounded-xl font-semibold text-lg transition glow" data-i18n="cta_button">
+                    Get Started Now →
+                </a>
+                <a href="/docs" class="glass hover:bg-white/10 px-10 py-5 rounded-xl font-semibold text-lg transition" data-i18n="hero_cta_docs">
+                    Read Documentation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Install App Banner -->
+    <section id="install-banner" class="hidden py-8 px-4">
+        <div class="max-w-3xl mx-auto">
+            <div class="glass rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-2xl">
+                        📲
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg" data-i18n="install_title">Install VEO3API App</h3>
+                        <p class="text-gray-400 text-sm" data-i18n="install_desc">Get quick access from your home screen</p>
+                    </div>
+                </div>
+                <button onclick="installApp()" class="bg-indigo-600 hover:bg-indigo-700 px-6 py-3 rounded-xl font-medium transition whitespace-nowrap" data-i18n="install_button">
+                    Install Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-xl">
+                            🎬
+                        </div>
+                        <span class="font-bold text-xl">Veo<span class="text-indigo-400">API</span></span>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        AI video generation API powered by Google Veo 3.1. The most affordable way to create stunning videos with sound.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4" data-i18n="footer_product">Product</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#features" class="hover:text-white transition" data-i18n="nav_features">Features</a></li>
+                        <li><a href="#pricing" class="hover:text-white transition" data-i18n="nav_pricing">Pricing</a></li>
+                        <li><a href="/docs" class="hover:text-white transition" data-i18n="nav_docs">API Docs</a></li>
+                        <li><a href="/ui" class="hover:text-white transition">Dashboard</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4" data-i18n="nav_integrations">Integrations</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#integrations" class="hover:text-white transition">n8n</a></li>
+                        <li><a href="#integrations" class="hover:text-white transition">Make.com</a></li>
+                        <li><a href="#integrations" class="hover:text-white transition">Zapier</a></li>
+                        <li><a href="#integrations" class="hover:text-white transition">Custom</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="/cdn-cgi/l/email-protection#8bf8fefbfbe4f9ffcbfdeee4b8eafbe2a5ffeee8e3" class="hover:text-white transition" data-i18n="footer_contact">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition" data-i18n="footer_status">Status</a></li>
+                        <li><a href="#" class="hover:text-white transition" data-i18n="footer_terms">Terms</a></li>
+                        <li><a href="#" class="hover:text-white transition" data-i18n="footer_privacy">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm" data-i18n="footer_copyright">© 2025 VEO3API. All rights reserved.</p>
+                <div class="flex items-center gap-4 text-gray-400">
+                    <span class="text-sm">Powered by</span>
+                    <span class="font-semibold text-white">Google Veo 3.1</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PWA Scripts -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        let deferredPrompt = null;
+        
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then((reg) => console.log('SW registered'))
+                .catch((err) => console.error('SW error:', err));
+        }
+        
+        // Listen for install prompt
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('install-banner').classList.remove('hidden');
+        });
+        
+        async function installApp() {
+            if (!deferredPrompt) {
+                alert('App is already installed or your browser doesn\'t support installation.\n\nOn iOS: Use Safari and tap "Add to Home Screen" from the share menu.');
+                return;
+            }
+            
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            
+            if (outcome === 'accepted') {
+                document.getElementById('install-banner').classList.add('hidden');
+            }
+            deferredPrompt = null;
+        }
+        
+        window.addEventListener('appinstalled', () => {
+            document.getElementById('install-banner').classList.add('hidden');
+            deferredPrompt = null;
+        });
+        
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            document.getElementById('install-banner').classList.add('hidden');
+        }
+    </script>
+    <script src="/js/i18n.js"></script>
+</body>
+</html>
