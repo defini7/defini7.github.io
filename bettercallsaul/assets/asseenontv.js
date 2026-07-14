@@ -5,7 +5,6 @@ $(document).ready(function(){
 		var bcslinkcontent = '<div><object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/wqnHtGgVAUE&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/wqnHtGgVAUE&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object></div>';
 		var fattylinkcontent = '<div><object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/3F2oO98C6Nw&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/3F2oO98C6Nw&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object></div>';
 		var fightinglinkcontent = '<div><object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/oN4PSu8qzNc&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/oN4PSu8qzNc&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object></div>';
-
 					
 		//handle click functionality on video thumbs			
 			
