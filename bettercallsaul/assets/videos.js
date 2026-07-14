@@ -1,13 +1,12 @@
 $(document).ready(function(){
-
 		$("#saulvideointro").show();
 
 		//set source for all youtube links to be called later
 
-		var suelinkcontent ='<div><object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/pPd67CEL54E&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/pPd67CEL54E&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object></div>';
-		var tigertroublecontent ='<div><object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/ll7GSiad0ko&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/ll7GSiad0ko&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object></div>';
-		var mailbagcontent ='<div><object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/j3DY1_zijgA&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/j3DY1_zijgA&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object></div>';
-		var wayfarercontent ='<div><object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/7B-hSSiaEAw&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/7B-hSSiaEAw&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object></div>';
+		var suelinkcontent = '<iframe width="640" height="385" src="https://www.youtube.com/embed/pPd67CEL54E?autoplay=1&rel=0&controls=0&cc_lang_pref=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>';
+		var tigertroublecontent = '<iframe width="640" height="385" src="https://www.youtube.com/embed/ll7GSiad0ko?autoplay=1&rel=0&controls=0&cc_lang_pref=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>';
+		var mailbagcontent = '<iframe width="640" height="385" src="https://www.youtube.com/embed/j3DY1_zijgA?autoplay=1&rel=0&controls=0&cc_lang_pref=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>';
+		var wayfarercontent = '<iframe width="640" height="385" src="https://www.youtube.com/embed/7B-hSSiaEAw?autoplay=1&rel=0&controls=0&cc_lang_pref=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>';
 
 		//handle click functionality on video thumbs
 
@@ -103,4 +102,3 @@ function killVideo() {
 function killVideoespanol() {
 	$("#enespanol").remove();
 }
-
